@@ -44,8 +44,8 @@ ad-principals -i names.txt
 
 **Verify integrity (SHA256):**
 ```bash
-# Latest checksum: CHECKSUM_PLACEHOLDER
-echo "CHECKSUM_PLACEHOLDER  ad-principals" | sha256sum -c -
+# Latest checksum: 147ee43875c2b39ada1f60af598c001e492d8d4b853a7fb2b1f6264b6138c46f
+echo "147ee43875c2b39ada1f60af598c001e492d8d4b853a7fb2b1f6264b6138c46f  ad-principals" | sha256sum -c -
 ```
 
 ### Option 2: From Source
