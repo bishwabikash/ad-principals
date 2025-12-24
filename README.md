@@ -30,7 +30,7 @@ pip3 install -r requirements.txt
 
 ### Option 1: Standalone Binary (Recommended)
 
-Download the latest pre-compiled binary from the [suspicious link removed] tab. This is a single executable that doesn't require Python.
+Download the latest pre-compiled binary from the [Releases](https://github.com/bishwabikash/ad-principals/releases) tab. This is a single executable that doesn't require Python.
 
 ```bash
 chmod +x ad-principals
