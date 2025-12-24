@@ -1,0 +1,68 @@
+name: Build and Release
+
+on:
+  push:
+    branches:
+      - master
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Necessary to push changes back
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyinstaller -r requirements.txt
+
+      - name: Build executable
+        run: |
+          pyinstaller --onefile --name ad-principals ad-principals.py
+
+      - name: Generate SHA256 Checksum
+        id: checksum
+        run: |
+          cd dist
+          HASH=$(sha256sum ad-principals | awk '{print $1}')
+          echo "HASH=$HASH" >> $GITHUB_ENV
+          sha256sum ad-principals > ad-principals.sha256
+
+      - name: Update README with Checksum
+        run: |
+          sed -i "s/CHECKSUM_PLACEHOLDER/${{ env.HASH }}/g" README.md
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "docs: update latest binary checksum [skip ci]"
+          git push
+
+      - name: Generate Release Tag
+        id: tag
+        run: echo "tag=v$(date +'%Y.%m.%d.%H%M%S')" >> $GITHUB_OUTPUT
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.tag.outputs.tag }}
+          name: Release ${{ steps.tag.outputs.tag }}
+          files: |
+            dist/ad-principals
+            dist/ad-principals.sha256
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
