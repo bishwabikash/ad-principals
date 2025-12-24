@@ -1,5 +1,7 @@
 # ad-principals
 
+[![Build and Release](https://github.com/bishwabikash/ad-principals/actions/workflows/release.yml/badge.svg)](https://github.com/bishwabikash/ad-principals/actions/workflows/release.yml)
+
 **ad-principals** is a lightweight, standalone Python utility designed for Red Teamers and Security Auditors to generate Active Directory `sAMAccountName` and `UserPrincipalName` (UPN) permutations from raw name lists.
 
 It is specifically optimized for identifying valid domain principals during the enumeration phase of an internal assessment or an Active Directory lab (e.g., Hack The Box, TryHackMe).
@@ -44,8 +46,8 @@ ad-principals -i names.txt
 
 **Verify integrity (SHA256):**
 ```bash
-# Latest checksum: 147ee43875c2b39ada1f60af598c001e492d8d4b853a7fb2b1f6264b6138c46f
-echo "147ee43875c2b39ada1f60af598c001e492d8d4b853a7fb2b1f6264b6138c46f  ad-principals" | sha256sum -c -
+# Latest checksum: CHECKSUM_PLACEHOLDER
+echo "CHECKSUM_PLACEHOLDER  ad-principals" | sha256sum -c -
 ```
 
 ### Option 2: From Source
