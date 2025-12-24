@@ -31,38 +31,13 @@ It is specifically optimized for identifying valid domain principals during the 
 ---
 
 ## Installation
-
-### Option 1: Pre-compiled Binary (Recommended)
-
-Download the latest standalone binary from the [**Releases**](https://github.com/bishwabikash/ad-principals/releases) tab:
+Clone the repository and install the minimal requirements:
 
 ```bash
-chmod +x ad-principals
-sudo mv ad-principals /usr/local/bin/
-ad-principals -i names.txt
-```
-
-**Verify integrity (SHA256):**
-```bash
-# Latest checksum: 060a55e970da9d7cda8ca9fe2aa13407597939f03af974478f0ca0cf3e8a12f1
-echo "060a55e970da9d7cda8ca9fe2aa13407597939f03af974478f0ca0cf3e8a12f1  ad-principals" | sha256sum -c -
-```
-
-### Option 2: From Source
-
-```bash
-git clone https://github.com/bishwabikash/ad-principals.git
+git clone [https://github.com/bishwabikash/ad-principals.git](https://github.com/bishwabikash/ad-principals.git)
 cd ad-principals
 pip3 install -r requirements.txt
-python3 ad-principals.py -i names.txt
-```
 
-### Global Installation
-
-```bash
-chmod +x ad-principals.py
-sudo ln -s $(pwd)/ad-principals.py /usr/local/bin/ad-principals
-# Now use as: ad-principals -i names.txt
 ```
 
 ---
@@ -70,6 +45,8 @@ sudo ln -s $(pwd)/ad-principals.py /usr/local/bin/ad-principals
 ## Usage
 
 ### Basic Usage
+
+Generate username variations (64-char limit, automatically compatible with both SAM and UPN):
 
 ```bash
 python3 ad-principals.py -i employees.txt
