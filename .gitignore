@@ -6,7 +6,8 @@
 # Ignore input source files containing real names
 *.csv
 *.txt
-
+# EXCEPTION: Do NOT ignore the requirements file
+!requirements.txt
 # --- Python Environment ---
 __pycache__/
 *.py[cod]

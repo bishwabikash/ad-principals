@@ -28,6 +28,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install pyinstaller -r requirements.txt
+          # Only attempt to install from requirements.txt if it has content
+          if [ -s requirements.txt ]; then
+            pip install -r requirements.txt
+          fi
 
       - name: Build executable
         run: |
