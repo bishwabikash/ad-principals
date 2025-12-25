@@ -172,6 +172,4 @@ This tool is for educational and ethical security testing purposes only. Use it 
 
 ---
 
-Made with <3 and VibeCoding
-
-```
+Made with :heart: and VibeCoding
